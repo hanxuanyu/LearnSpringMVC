@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>REST</title>
+</head>
+<body>
+<h1>测试REST风格</h1>
+<a th:href="@{/user}">查询所有用户信息</a><br/>
+<a th:href="@{/user/1}">根据ID查询用户信息</a><br/>
+<form th:action="@{/user}" method="post">
+    <label>
+        用户名<input type="text" name="username">
+    </label><br>
+    <label>
+        密码<input type="password" name="password">
+    </label><br>
+    <label>
+        <input type="submit" name="添加用户">
+    </label><br>
+</form>
+
+<form th:action="@{/user}" method="post">
+    <input type="hidden" name="_method" value="put">
+    <label>
+        用户名<input type="text" name="username">
+    </label><br>
+    <label>
+        密码<input type="password" name="password">
+    </label><br>
+    <label>
+        <input type="submit" name="修改用户">
+    </label><br>
+</form>
+</body>
+</html>
