@@ -25,6 +25,9 @@
             </bean>
         </property>
     </bean>
+    <!--首页控制器-->
+    <mvc:view-controller path="/" view-name="index"/>
+    <mvc:view-controller path="/toAdd" view-name="employee_add"/>
     <!--
     处理静态资源，例如html、js、css、jpg
     若只设置该标签，则只能访问静态资源，其他请求则无法访问

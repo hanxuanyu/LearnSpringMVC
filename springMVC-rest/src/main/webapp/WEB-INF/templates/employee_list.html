@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>员工信息</title>
+</head>
+<body>
+<h1>员工信息</h1>
+<table id="dataTable" border="1" cellpadding="0" cellspacing="0" style="text-align: center">
+    <tr>
+        <th colspan="5">EmployeeInfo</th>
+    </tr>
+    <tr>
+        <th>id</th>
+        <th>lastName</th>
+        <th>email</th>
+        <th>gender</th>
+        <th>options(<a th:href="@{/toAdd}">add</a> )</th>
+    </tr>
+    <tr th:each="employee, index: ${employeeList}">
+        <td th:text="${employee.getId()}"></td>
+        <td th:text="${employee.getLastName()}"></td>
+        <td th:text="${employee.getEmail()}"></td>
+        <td th:text="${employee.getGender()}"></td>
+        <td>
+            <a v-on:click="deleteEmployee" th:href="@{'/employee/' + ${employee.getId()}}">delete</a>
+            <a th:href="@{'/employee/' + ${employee.getId()}}">update</a>
+        </td>
+    </tr>
+</table>
+<form id="deleteForm" method="post">
+    <input type="hidden" name="_method" value="delete">
+</form>
+<script type="text/javascript" th:src="@{/static/js/vue.js}"></script>
+<script>
+    let vue = new Vue({
+        el: "#dataTable",
+        methods: {
+            deleteEmployee: function (event) {
+                let deleteForm = document.getElementById("deleteForm");
+                deleteForm.action = event.target.href;
+                deleteForm.submit();
+                event.preventDefault();
+            }
+        }
+    });
+</script>
+</body>
+</html>
