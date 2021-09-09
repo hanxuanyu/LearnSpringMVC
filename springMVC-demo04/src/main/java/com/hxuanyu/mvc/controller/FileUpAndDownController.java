@@ -59,11 +59,11 @@ public class FileUpAndDownController {
         String fileName = file.getOriginalFilename();
         System.out.println(fileName);
         // 处理文件重名问题
-        String hzName = null;
+        String suffix = null;
         if (fileName != null) {
-            hzName = fileName.substring(fileName.lastIndexOf("."));
+            suffix = fileName.substring(fileName.lastIndexOf("."));
         }
-        fileName = UUID.randomUUID() + hzName;
+        fileName = UUID.randomUUID() + suffix;
         // 获取服务器中file目录的路径
         ServletContext servletContext = session.getServletContext();
         String filePath = servletContext.getRealPath("file");
