@@ -17,4 +17,11 @@ public class TestController {
     public String testInterceptor() {
         return "success";
     }
+
+    @RequestMapping("/testExceptionHandler")
+    public String testException() {
+        // 模拟异常
+        System.out.println(10 / 0);
+        return "success";
+    }
 }
